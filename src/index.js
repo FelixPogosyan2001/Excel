@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import './second';
 import './styles/index.scss';
 

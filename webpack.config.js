@@ -7,13 +7,14 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
+const fileName = (ext) => isProd ? `bundle.[hash].${ext}` : `bundle.${ext}`;
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: './index.js',
     mode: 'development',
     output: {
-        filename: 'bundle.[hash].js',
+        filename: fileName('js'),
         path: path.resolve(__dirname, 'dist')
     },
     resolve: {
@@ -25,13 +26,13 @@ module.exports = {
     devtool: isDev ? 'source-map' : false,
     devServer: {
         port: 3000,
-        hot: isDev
+        hot: true
     },
     plugins: [
         new ESLintPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name].[hash].css'
+            filename: fileName('css')
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
