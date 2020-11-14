@@ -1,11 +1,19 @@
-$theme: lightgreen;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import '~normalize.css';
+@import "mixins";
+@import "variables";
+@import "dashboard";
+@import "header";
+@import "toolbar";
+@import "formula";
+@import "table";
 
-body {
-  background: $theme;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#app {
-  width: 100px;
-  height: 20px;
-  background: green;
+body {
+  font-family: 'Roboto', sans-serif;
 }
