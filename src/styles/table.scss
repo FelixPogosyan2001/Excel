@@ -3,6 +3,8 @@
   top: $header-height + $formula-height + $toolbar-height;
   left: 0;
   right: 0;
+  height: calc(100% - (#{$header-height} + #{$formula-height} + #{$toolbar-height}));
+  overflow: auto;
 
   .row {
     display: flex;
@@ -40,14 +42,16 @@
 
 
     &.selected {
-      border: none;
+      #width: $cell-width - 1px;
       outline: 2px solid #3c74ff;
       z-index: 2;
     }
   }
 
   .column {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #f8f9fa;
     min-width: 40px;
     width: $cell-width;
