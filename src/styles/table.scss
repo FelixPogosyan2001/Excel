@@ -3,8 +3,7 @@
   top: $header-height + $formula-height + $toolbar-height;
   left: 0;
   right: 0;
-  height: calc(100% - (#{$header-height} + #{$formula-height} + #{$toolbar-height}));
-  overflow: auto;
+  overflow-x: auto;
 
   .row {
     display: flex;
@@ -14,6 +13,7 @@
   }
 
   .row-info {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,10 +22,59 @@
     border: 1px solid $border-color;
     background: #f8f9fa;
     border-top: none;
+    user-select: none;
   }
 
   .row-data {
     display: flex;
+  }
+
+  .col-resize, .row-resize {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #3c74ff;
+    opacity: 0;
+    z-index: 100;
+
+    &:hover, &:active {
+      opacity: 1;
+    }
+  }
+
+   .row-line {
+     position: absolute;
+     top: 50%;
+     height: 2px;
+     transform: translateY(-50%);
+     z-index: 100;
+     background: #3c74ff;
+  }
+
+   .col-line {
+     position: absolute;
+     left: 50%;
+     width: 2px;
+     transform: translateX(-50%);
+     background: #3c74ff;
+  }
+
+  .row-resize {
+    height: 4px;
+    left: 0;
+
+    &:hover {
+      cursor: row-resize;
+    }
+  }
+
+  .col-resize {
+    width: 4px;
+    top: 0;
+
+    &:hover {
+      cursor: col-resize;
+    }
   }
 
   .cell {
@@ -42,13 +91,13 @@
 
 
     &.selected {
-      #width: $cell-width - 1px;
       outline: 2px solid #3c74ff;
       z-index: 2;
     }
   }
 
   .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,5 +108,6 @@
     border-top: 0;
     border-left: 0;
     height: 100%;
+    user-select: none;
   }
 }

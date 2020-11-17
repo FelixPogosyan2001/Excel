@@ -5,6 +5,14 @@ class Dom {
         : selector
     }
 
+    get data() {
+        return this.$el.dataset;
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector);
+    }
+
     html(template) {
         if (typeof template === 'string') {
             this.$el.innerHTML = template;
@@ -28,6 +36,25 @@ class Dom {
         if (node instanceof Dom) node = node.$el;
         this.$el.append(node);
         return this;
+    }
+
+    delete(node) {
+        if (node instanceof Dom) node = node.$el;
+        this.$el.removeChild(node);
+        return this;
+    }
+
+    closest(selector) {
+        return $(this.$el.closest(selector));
+    }
+
+    getCoordinates() {
+        return this.$el.getBoundingClientRect();
+    }
+
+    css(prop, value) {
+       this.$el.style[prop] = value;
+       return this;
     }
 
     clear() {
