@@ -9,8 +9,40 @@ class Dom {
         return this.$el.dataset;
     }
 
+    get text() {
+        return this.$el.textContent;
+    }
+
+    set text(content) {
+        this.$el.textContent = content;
+    }
+
     findAll(selector) {
         return this.$el.querySelectorAll(selector);
+    }
+
+    find(selector) {
+        return $(this.$el.querySelector(selector));
+    }
+
+    focus() {
+        this.$el.focus();
+        return this;
+    }
+
+    blur() {
+        this.$el.blur();
+        return this;
+    }
+
+    addClass(className) {
+        this.$el.classList.add(className);
+        return this;
+    }
+
+    removeClass(className) {
+        this.$el.classList.remove(className);
+        return this;
     }
 
     html(template) {
