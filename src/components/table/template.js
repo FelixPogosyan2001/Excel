@@ -18,9 +18,13 @@ function createColumn(content, colNum) {
             </div>`
 }
 
-function createCell(active, colNum) {
-    return `<div class="cell ${active}" contenteditable data-col="${colNum}">
-            </div>`
+function createCell(rowNum, colNum) {
+    return `<div 
+              class="cell" 
+              contenteditable 
+              data-col="${colNum}"
+              data-id="${rowNum}:${colNum}"
+            ></div>`
 }
 
 export function createTable(rowsCount = 20) {
@@ -43,7 +47,7 @@ export function createTable(rowsCount = 20) {
         else {
             const cells = new Array(colsCount)
                 .fill('')
-                .map((_, j) => createCell((!i && !j) ? 'selected' : '', j))
+                .map((_, j) => createCell(i, j))
                 .join('');
 
             rows.push(createRow(i + 1, cells))

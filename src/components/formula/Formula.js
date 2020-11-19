@@ -3,16 +3,33 @@ import {ExcelComponent} from "@/core/ExcelComponent";
 export class Formula extends ExcelComponent {
     static className = 'excel__formula';
 
-    constructor($root) {
+    constructor($root, options) {
         super($root, {
             name: 'Formula',
-            events: ['input']
+            events: ['input', 'keydown'],
+            ...options
         });
     }
 
+    init() {
+        super.init();
+        const input = this.$root.find('.input');
+        this.$on('table:input', (content) => {
+            input.text = content;
+        })
+    }
+
     onInput(e) {
-        console.log(this);
-        console.log(e.target.textContent.trim());
+        const text = e.target.textContent.trim();
+        this.$emit('formula:input', text);
+    }
+
+    onKeydown(e) {
+        if (e.key === 'Enter' || e.key === 'Tab') {
+            e.preventDefault();
+            this.$root.find('.input').blur();
+            this.$emit('formula:done');
+        }
     }
 
     toHTML() {
