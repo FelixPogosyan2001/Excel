@@ -17,6 +17,15 @@ class Dom {
         this.$el.textContent = content;
     }
 
+    attr(name, value) {
+        if (value) {
+            this.$el.setAttribute(name, value);
+            return this;
+        }
+
+        return this.$el.getAttribute(name);
+    }
+
     findAll(selector) {
         return this.$el.querySelectorAll(selector);
     }
@@ -87,6 +96,13 @@ class Dom {
     css(prop, value) {
        this.$el.style[prop] = value;
        return this;
+    }
+
+    getStyles(styles = []) {
+        return styles.reduce((prev, curr) => {
+            prev[curr] = this.$el.style[curr];
+            return prev;
+        }, {});
     }
 
     clear() {
