@@ -16,8 +16,8 @@
     background: #eee;
   }
 
-  &:active {
-    color: $color;
+  &:active, &.active {
+    color: red;
   }
 }
 

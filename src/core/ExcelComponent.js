@@ -5,17 +5,28 @@ export class ExcelComponent extends DomListener {
         super($root, options.events);
         this.name = options.name || '';
         this.emitter = options.emitter;
+        this.subscriptions = options.subscribe || [];
+        this.store = options.store;
         this.unsubscribers = [];
+        this.prepare();
+    }
+
+    storeChanged() {}
+
+    $dispatch(action) {
+        this.store.dispatch(action);
     }
 
     $emit(event, ...args) {
-        return this.emitter.emit(event, args);
+        return this.emitter.emit(event, ...args);
     }
 
     $on(event, fn) {
         const unsubscriber = this.emitter.subscribe(event, fn);
         this.unsubscribers.push(unsubscriber);
     }
+
+    prepare() {}
 
     init() {
         this.initEventListeners();

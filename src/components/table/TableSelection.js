@@ -7,6 +7,10 @@ export class TableSelection {
         this.current = null;
     }
 
+    get selectedIds() {
+        return this.group.map(($cell) => $cell.data.id);
+    }
+
     select($cell) {
         this.clear();
         $cell.focus().addClass(TableSelection.chosen);
@@ -33,5 +37,13 @@ export class TableSelection {
 
             this.group.push($cell);
         });
+    }
+
+    applyStyle(style) {
+        this.group.forEach(($cell) => {
+            Object.entries(style).forEach((item) => {
+                $cell.css(item[0], item[1]);
+            })
+        })
     }
 }
