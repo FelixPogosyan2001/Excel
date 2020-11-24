@@ -10,6 +10,15 @@ export function storage(key, value = null) {
     return JSON.parse(localStorage.getItem(key));
 }
 
+export function deleteFromStorage(key) {
+    if (key) {
+        localStorage.removeItem(key);
+        return true;
+    }
+
+    return false;
+}
+
 export function isEqual(prev, next) {
     if (typeof prev === 'object' && typeof next === 'object') {
         return JSON.stringify(prev) === JSON.stringify(next);

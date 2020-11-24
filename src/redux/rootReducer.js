@@ -13,7 +13,8 @@ export const initialState = {
     title: '',
     cellsData: {},
     toolbarStyles: defaultStyles,
-    cellsStyles: {}
+    cellsStyles: {},
+    lastVisit: new Date().toLocaleDateString()
 }
 
 export function rootReducer(state, action) {
