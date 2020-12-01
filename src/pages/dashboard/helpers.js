@@ -16,6 +16,7 @@ function toRecord(key) {
     const {title, lastVisit} = storage(key);
 
     return `<li class="db__record">
+              <img src="../favicon.ico">
               <a href="#excel/${id}">${title || 'Новая таблица'}</a>
               <strong>${lastVisit}</strong>
            </li>`;

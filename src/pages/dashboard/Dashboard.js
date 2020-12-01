@@ -12,9 +12,13 @@ export class DashboardPage extends Page {
             </div>
             <div class="db__new">
                 <div class="db__view">
-                    <a href="#excel/${tableID}" class="db__create">
-                        Новая <br /> Таблица
-                    </a>
+                    <span class="db__title">Cоздать таблицу</span>
+                    <div class="db__template">
+                        <a href="#excel/${tableID}" class="db__create">
+                            <img src="https://ssl.gstatic.com/docs/templates/thumbnails/sheets-blank-googlecolors.png" />             
+                        </a>
+                        <p>Пустой файл</p>
+                    </div>
                 </div>
             </div>
             <div class="db__table db__view">

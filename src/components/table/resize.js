@@ -21,10 +21,12 @@ export function resizeHandler(e, $root) {
 
         document.onmousemove = ({pageX, pageY}) => {
             if (resize === 'col') {
-                result = pageX - coordinates.right + resizerCoors.width;
+                const value = coordinates.right + scrollX;
+                result = pageX - value + resizerCoors.width;
                 $resizer.css('transform', `translateX(${result}px)`);
             } else if (resize === 'row') {
-                result = pageY - coordinates.bottom + resizerCoors.height;
+                const value = coordinates.bottom + scrollY;
+                result = pageY - value + resizerCoors.height;
                 $resizer.css('transform', `translateY(${result}px)`);
             }
         }

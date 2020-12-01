@@ -20,9 +20,25 @@
     background: #ededed;
   }
 
-  &__create {
+  &__title {
+    display: inline-block;
+    padding-bottom: 20px;
+    padding-left: 4px;
+  }
+
+  &__template {
     width: 160px;
     height: 160px;
+
+    > p {
+      padding: 15px 15px 0 4px;
+      font-weight: 600;
+      font-family: "Fira Code Light";
+      font-size: 15px;
+    }
+  }
+
+  &__create {
     background: #fff;
     border-radius: 4px;
     border: 1px solid #dadce0;
@@ -38,6 +54,10 @@
       cursor: pointer;
       color: green;
       border-color: green;
+    }
+
+    > img {
+      width: 100%;
     }
   }
 
@@ -56,7 +76,7 @@
     color: #202124;
     font-weight: 500;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     padding: 0 12px;
   }
 
@@ -65,11 +85,13 @@
   }
 
   &__record {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 14px 12px 16px;
     margin-bottom: 10px;
+    cursor: pointer;
 
     &:hover {
       background: #e6f4ea;
@@ -78,13 +100,14 @@
 
     a {
       text-decoration: none;
-      cursor: pointer;
       color: #202124;
       font-size: 14px;
+      padding-left: 6%;
+    }
 
-      &:hover {
-        text-decoration: underline;
-      }
+    img {
+      position: absolute;
+      height: 60%;
     }
   }
 
